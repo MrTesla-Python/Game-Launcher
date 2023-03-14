@@ -59,8 +59,8 @@ namespace GameLauncher
 
             rootPath = Directory.GetCurrentDirectory();
             versionFile = Path.Combine(rootPath, "Version.txt");
-            gameZip = Path.Combine(rootPath, "Build.zip");
-            gameExe = Path.Combine(rootPath, "Build", "David V Goliath.exe");
+            gameZip = Path.Combine(rootPath, "David V Goliath.zip");
+            gameExe = Path.Combine(rootPath, "David V Goliath", "David V Goliath.exe");
         }
 
         private void CheckForUpdates()
@@ -73,7 +73,7 @@ namespace GameLauncher
                 try
                 {
                     WebClient webClient = new WebClient();
-                    Version onlineVersion = new Version(webClient.DownloadString("https://drive.google.com/uc?export=download&id=1KGA-sUBmOpxZKQAWg5dlCCUR_6vkm7jA"));
+                    Version onlineVersion = new Version(webClient.DownloadString("https://www.googleapis.com/drive/v3/files/10sH--x8VT7Gp2R941pXh5hR-i1Yax3Xi?alt=media&key=AIzaSyBxvS7rftTEyBXzyg1OkSRhOxOn71tFH2w"));
 
                     if (onlineVersion.IsDifferentThan(localVersion))
                     {
@@ -151,7 +151,7 @@ namespace GameLauncher
             if (File.Exists(gameExe) && Status == LauncherStatus.ready)
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo(gameExe);
-                startInfo.WorkingDirectory = Path.Combine(rootPath, "Build");
+                startInfo.WorkingDirectory = Path.Combine(rootPath, "David V Goliath");
                 Process.Start(startInfo);
 
                 Close();
